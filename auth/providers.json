@@ -1,12 +1,1 @@
-{
-    "anon-user": {
-        "name": "anon-user",
-        "type": "anon-user",
-        "disabled": true
-    },
-    "api-key": {
-        "name": "api-key",
-        "type": "api-key",
-        "disabled": true
-    }
-}
+{}

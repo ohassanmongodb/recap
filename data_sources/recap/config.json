@@ -1,8 +1,8 @@
 {
-    "name": "mongodb-atlas",
+    "name": "recap",
     "type": "mongodb-atlas",
     "config": {
-        "clusterName": "Cluster0",
+        "clusterName": "Cluster1",
         "readPreference": "primary",
         "wireProtocolEnabled": false
     },
