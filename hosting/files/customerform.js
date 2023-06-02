@@ -1,4 +1,4 @@
-await function saveReport(event) {
+function saveReport(event) {
     event.preventDefault();
 
 
