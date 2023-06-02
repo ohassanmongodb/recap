@@ -1,4 +1,6 @@
 {
     "enabled": true,
-    "app_default_domain": "recap-zzkqk.mongodbstitch.com"
+    "app_default_domain": "recap-zzkqk.mongodbstitch.com",
+    "default_error_path": "/customerform.html",
+    "default_error_code": "200"
 }
