@@ -11,7 +11,7 @@ function saveReport(event) {
     const user =  app.logIn(credentials);
 
     // Access the MongoDB collection
-    const mongodb = user.mongoClient('mongodb-atlas');
+    const mongodb = app.currentUser.mongoClient('mongodb-atlas');
     const collection = mongodb.db('report').collection('customers');
 
     user.then( d => console.log(d));
