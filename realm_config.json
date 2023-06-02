@@ -1,9 +1,8 @@
 {
-    "app_id": "recap-zzkqk",
+    "app_id": "application-2-khwbn",
     "config_version": 20210101,
-    "name": "Recap",
+    "name": "Application-2",
     "location": "DE-FF",
     "provider_region": "aws-eu-central-1",
-    "deployment_model": "LOCAL",
-    "environment": "testing"
+    "deployment_model": "LOCAL"
 }
