@@ -1,0 +1,38 @@
+async function saveReport(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('reportForm');
+    const customer = form.customer.value;
+    const newCustomer = form['new-customer'].value;
+    const report = form.report.value;
+
+    // Create a new Realm app
+    const appId = 'recap-zzkqk';
+    const app = new Realm.App({ id: appId });
+
+    // Authenticate the user anonymously
+    const credentials = Realm.Credentials.anonymous();
+    const user = await app.logIn(credentials);
+
+    // Access the MongoDB collection
+    const mongodb = user.mongoClient('mongodb-atlas');
+    const collection = mongodb.db('report').collection('customers');
+
+    // Prepare the document to be saved
+    const document = {
+      customer: customer || newCustomer,
+      report: report
+    };
+
+    try {
+      // Insert the document into the collection
+      await collection.insertOne(document);
+      console.log('Report saved successfully!');
+      form.reset();
+    } catch (error) {
+      console.error('Error saving report:', error);
+    } finally {
+      // Log out the user to end the Realm session
+      await user.logOut();
+    }
+  }
