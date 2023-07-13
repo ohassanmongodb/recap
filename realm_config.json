@@ -1,7 +1,7 @@
 {
-    "app_id": "application-2-khwbn",
+    "app_id": "catcher-pkhkh",
     "config_version": 20210101,
-    "name": "Application-2",
+    "name": "catcher",
     "location": "DE-FF",
     "provider_region": "aws-eu-central-1",
     "deployment_model": "LOCAL"
